@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Modelo demonstrativo de página institucional para a Carajás Home Center. Consulte o site oficial para informações atualizadas.">
+  <meta name="theme-color" content="#132b3a">
+  <title>Carajás Home Center | Casa, construção e decoração</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #132b3a;
+      --muted: #52616b;
+      --paper: #fffdf9;
+      --surface: #f4f1ea;
+      --orange: #e75b22;
+      --orange-dark: #b84112;
+      --line: #e5ded2;
+      --radius: 22px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--paper); color: var(--ink); line-height: 1.6; }
+    a { color: inherit; }
+    a:focus-visible {
+      outline: 3px solid var(--orange);
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+    .draft-notice {
+      padding: 10px 20px;
+      text-align: center;
+      background: #fff0d9;
+      color: #573517;
+      font-size: .88rem;
+    }
+    .draft-notice strong { font-weight: 750; }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin-inline: auto; }
+    header { background: var(--paper); border-bottom: 1px solid var(--line); }
+    .nav {
+      min-height: 82px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+    .wordmark {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      text-decoration: none;
+      font-weight: 850;
+      letter-spacing: -.055em;
+      font-size: 1.55rem;
+    }
+    .mark {
+      width: 35px;
+      height: 35px;
+      display: grid;
+      place-items: center;
+      background: var(--orange);
+      color: white;
+      border-radius: 11px 11px 11px 3px;
+      font-size: 1.1rem;
+      letter-spacing: 0;
+    }
+    nav { display: flex; gap: 25px; align-items: center; font-size: .94rem; }
+    nav a { text-decoration: none; color: var(--muted); }
+    nav a:hover { color: var(--orange-dark); }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 13px 21px;
+      font-weight: 750;
+      text-decoration: none;
+      background: var(--orange);
+      color: #fff;
+      box-shadow: 0 8px 18px #e75b2226;
+      transition: transform .18s ease, background .18s ease;
+    }
+    .button:hover { transform: translateY(-2px); background: var(--orange-dark); }
+    .button.secondary {
+      background: transparent;
+      border: 1px solid #ffffff91;
+      color: white;
+      box-shadow: none;
+    }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 86px 0 90px;
+      background: var(--ink);
+      color: white;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 430px;
+      height: 430px;
+      border: 1px solid #ffffff18;
+      border-radius: 50%;
+      right: -100px;
+      top: -170px;
+      box-shadow: 0 0 0 55px #ffffff09, 0 0 0 110px #ffffff06;
+      pointer-events: none;
+    }
+    .hero-inner { position: relative; z-index: 1; max-width: 750px; }
+    .eyebrow {
+      color: #ffc19d;
+      font-weight: 750;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-size: .78rem;
+    }
+    h1 {
+      max-width: 760px;
+      margin: 14px 0 20px;
+      font-size: clamp(2.6rem, 7vw, 5rem);
+      line-height: 1.02;
+      letter-spacing: -.065em;
+    }
+    .hero p { max-width: 590px; color: #d4dce0; font-size: 1.13rem; margin: 0 0 30px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    section { padding: 76px 0; }
+    .section-heading { max-width: 660px; margin-bottom: 32px; }
+    .section-heading h2 {
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: -.045em;
+      margin: 7px 0 12px;
+    }
+    .section-heading p { color: var(--muted); margin: 0; }
+    .eyebrow.dark { color: var(--orange-dark); }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .card {
+      min-height: 220px;
+      padding: 26px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: #ffe1d1;
+      color: var(--orange-dark);
+      font-size: 1.25rem;
+      margin-bottom: 24px;
+    }
+    .card h3 { margin: 0 0 7px; font-size: 1.18rem; letter-spacing: -.02em; }
+    .card p { margin: 0; color: var(--muted); }
+    .about { background: #f8f5ef; }
+    .about-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 44px; align-items: start; }
+    .about-grid h2 {
+      margin-top: 5px;
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: -.045em;
+    }
+    .about-copy { color: var(--muted); font-size: 1.03rem; }
+    .about-copy p:first-child { margin-top: 0; }
+    .callout {
+      padding: 28px;
+      border-left: 4px solid var(--orange);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      background: white;
+      margin-top: 22px;
+      color: var(--ink);
+    }
+    .callout p { margin: 0; }
+    .visit { padding: 58px 0; background: var(--orange); color: #fff; }
+    .visit-inner { display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+    .visit h2 {
+      margin: 0 0 6px;
+      font-size: clamp(1.7rem, 4vw, 2.5rem);
+      line-height: 1.1;
+      letter-spacing: -.04em;
+    }
+    .visit p { margin: 0; color: #fff1e9; }
+    .visit .button { background: white; color: var(--orange-dark); box-shadow: none; white-space: nowrap; }
+    footer { padding: 30px 0; background: #0d202b; color: #c4cfd4; font-size: .88rem; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 18px; }
+    footer a { color: white; }
+    .disclaimer { max-width: 720px; margin: 18px 0 0; color: #a9b7be; font-size: .8rem; }
+    @media (max-width: 760px) {
+      .nav { padding: 16px 0; align-items: flex-start; flex-direction: column; gap: 14px; }
+      nav { width: 100%; gap: 16px; flex-wrap: wrap; }
+      nav .button { padding: 10px 15px; }
+      .hero { padding: 66px 0 72px; }
+      section { padding: 58px 0; }
+      .cards { grid-template-columns: 1fr; }
+      .card { min-height: auto; }
+      .about-grid { grid-template-columns: 1fr; gap: 4px; }
+      .visit-inner, .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="draft-notice" role="note">
+    <strong>Modelo demonstrativo não oficial.</strong> Publique ou apresente como página da Carajás somente com autorização da organização.
+  </div>
+
+  <header>
+    <div class="wrap nav">
+      <a class="wordmark" href="#inicio" aria-label="Carajás Home Center — início">
+        <span class="mark" aria-hidden="true">C</span>
+        <span>Carajás</span>
+      </a>
+      <nav aria-label="Navegação principal">
+        <a href="#solucoes">Soluções</a>
+        <a href="#sobre">Sobre</a>
+        <a class="button" href="https://www.carajas.com.br/" target="_blank" rel="noopener noreferrer">Visitar site oficial</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="wrap hero-inner">
+        <span class="eyebrow">Carajás Home Center</span>
+        <h1>Ideias e soluções para cada etapa da sua casa.</h1>
+        <p>Um só lugar para encontrar produtos para construir, reformar e renovar os ambientes.</p>
+        <div class="actions">
+          <a class="button" href="https://www.carajas.com.br/" target="_blank" rel="noopener noreferrer">Conheça a loja on-line</a>
+          <a class="button secondary" href="https://www.carajas.com.br/nossas-lojas" target="_blank" rel="noopener noreferrer">Encontre uma loja</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="solucoes">
+      <div class="wrap">
+        <div class="section-heading">
+          <span class="eyebrow dark">Para sua casa</span>
+          <h2>Do projeto aos detalhes finais.</h2>
+          <p>Explore categorias de produtos no site oficial e encontre opções para diferentes necessidades da casa.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <span class="icon" aria-hidden="true">⌂</span>
+            <h3>Construção e reforma</h3>
+            <p>Materiais e itens para etapas de construção, manutenção e renovação.</p>
+          </article>
+          <article class="card">
+            <span class="icon" aria-hidden="true">✳</span>
+            <h3>Casa e decoração</h3>
+            <p>Produtos para compor ambientes e trazer praticidade ao dia a dia.</p>
+          </article>
+          <article class="card">
+            <span class="icon" aria-hidden="true">▧</span>
+            <h3>Eletro e utilidades</h3>
+            <p>Confira a seleção de eletrodomésticos e utilidades disponível nos canais oficiais.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="sobre">
+      <div class="wrap about-grid">
+        <div>
+          <span class="eyebrow dark">Quem somos</span>
+          <h2>Um home center com raízes no Nordeste.</h2>
+        </div>
+        <div class="about-copy">
+          <p>A Carajás Home Center nasceu em Maceió e ampliou sua atuação para atender diferentes etapas de construção, reforma e decoração. Esta página apresenta um resumo demonstrativo; consulte os canais oficiais para informações institucionais atualizadas.</p>
+          <div class="callout">
+            <p>Para consultar informações da empresa, disponibilidade de produtos, condições comerciais e endereços, acesse diretamente o site oficial da Carajás.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="visit" aria-label="Acesso ao site oficial">
+      <div class="wrap visit-inner">
+        <div>
+          <h2>Continue pelos canais oficiais.</h2>
+          <p>Consulte produtos, informações e lojas diretamente no site da Carajás.</p>
+        </div>
+        <a class="button" href="https://www.carajas.com.br/" target="_blank" rel="noopener noreferrer">Acessar carajas.com.br</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <span>Carajás Home Center · modelo de página demonstrativo</span>
+      <div class="footer-links">
+        <a href="https://www.carajas.com.br/quem-somos" target="_blank" rel="noopener noreferrer">Quem somos no site oficial</a>
+        <a href="https://www.carajas.com.br/" target="_blank" rel="noopener noreferrer">Site oficial</a>
+      </div>
+    </div>
+    <div class="wrap">
+      <p class="disclaimer">Este arquivo é um rascunho independente, não representa uma publicação oficial da Carajás e não contém formulário de coleta de dados. Confirme autorização, conteúdo, marca, políticas e informações comerciais antes de qualquer uso público ou em anúncios.</p>
+    </div>
+  </footer>
+</body>
+</html>
